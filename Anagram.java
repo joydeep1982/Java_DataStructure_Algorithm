@@ -1,4 +1,4 @@
-package org.hacker.rank;
+package org.ds_algo;
 
 import java.util.Map;
 import java.util.TreeMap;
