@@ -1,4 +1,4 @@
-package org.ds_algo;
+package ds.algo.solution;
 
 import java.util.Map;
 import java.util.TreeMap;
