@@ -18,9 +18,16 @@ public class TreeTraversalDemo {
 
 		TreeNode root = one;
 		TreeTraversalDemo traversal = new TreeTraversalDemo();
+		System.out.println("level order");
 		traversal.levelOrder(root);
+		
+		System.out.println("in order");
 		traversal.inOrder(root);
+		
+		System.out.println("post order");
 		traversal.postOrder(root);
+		
+		System.out.println("pre order");
 		traversal.preOrder(root);
 	}
 	
