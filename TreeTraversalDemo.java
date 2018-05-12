@@ -1,9 +1,45 @@
-package ds.algo.solution;
+package ds.algo.solutions;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class TreeTraversalDemo {
+	
+	public static void main(String[] args) {
+		TreeNode one = new TreeNode(1);
+		TreeNode two = new TreeNode(2);
+		TreeNode three = new TreeNode(3);
+		TreeNode four = new TreeNode(4);
+		TreeNode five = new TreeNode(5);
+		
+		one.addLeft(two).addRight(three);
+		two.addLeft(four).addRight(five);
 
+		TreeNode root = one;
+		TreeTraversalDemo traversal = new TreeTraversalDemo();
+		traversal.levelOrder(root);
+		traversal.inOrder(root);
+		traversal.postOrder(root);
+		traversal.preOrder(root);
+	}
+	
+	public void levelOrder(TreeNode root) {
+		Queue<TreeNode> queue = new LinkedList<>();
+		queue.add(root);
+		TreeNode temp;
+		while (!queue.isEmpty()) {
+			temp = queue.poll();
+			System.out.println(temp);
+			if (temp.left != null) {
+				queue.add(temp.left);
+			}
+			if (temp.right != null) {
+				queue.add(temp.right);
+			}
+		}
+	}
+	
 	public void inOrder(TreeNode node) {
 		if (node == null) {
 			return;
