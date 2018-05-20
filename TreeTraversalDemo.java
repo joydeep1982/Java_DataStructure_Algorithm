@@ -7,30 +7,38 @@ import java.util.Stack;
 public class TreeTraversalDemo {
 	
 	public static void main(String[] args) {
-		TreeNode one = new TreeNode(1);
-		TreeNode two = new TreeNode(2);
-		TreeNode three = new TreeNode(3);
-		TreeNode four = new TreeNode(4);
-		TreeNode five = new TreeNode(5);
+		TreeNode a = new TreeNode("A");
+		TreeNode b = new TreeNode("B");
+		TreeNode c = new TreeNode("C");
+		TreeNode d = new TreeNode("D");
+		TreeNode e = new TreeNode("E");
+		TreeNode f = new TreeNode("F");
 		
-		one.addLeft(two).addRight(three);
-		two.addLeft(four).addRight(five);
-
-		TreeNode root = one;
+		a.addLeft(b).addRight(f);
+		b.addLeft(d).addRight(e);
+		f.addLeft(c);
+		
+		TreeNode root = a;
 		TreeTraversalDemo traversal = new TreeTraversalDemo();
-		System.out.println("level order");
-		traversal.levelOrder(root);
+		traversal.printTree(root, 0);
 		
 		System.out.println("in order");
 		traversal.inOrder(root);
-		
-		System.out.println("post order");
-		traversal.postOrder(root);
 		
 		System.out.println("pre order");
 		traversal.preOrder(root);
 	}
 	
+	private static int treeHeight(TreeNode node) {
+		if (node == null) {
+			return 0;
+		}
+		int l = treeHeight(node.left);
+		int r = treeHeight(node.right);
+		
+		return Math.max(l, r) + 1;
+	}
+
 	public void levelOrder(TreeNode root) {
 		Queue<TreeNode> queue = new LinkedList<>();
 		queue.add(root);
@@ -106,7 +114,6 @@ public class TreeTraversalDemo {
 				stack.add(temp.right);
 			if (temp.left != null)
 				stack.add(temp.left);
-			
 		}
 	}
 	
@@ -124,17 +131,27 @@ public class TreeTraversalDemo {
 			return;
 		}
 	}
+	
+	public void printTree(TreeNode node, int level) {
+		if (node == null) {
+			return;
+		}
+		for (int i = 0; i < level; i++) System.out.print("-");
+		System.out.println(node);
+		printTree(node.left, level + 1);
+		printTree(node.right, level + 1);
+	}
 }
 
 class TreeNode {
 	
-	int value;
+	String value;
 	
 	TreeNode left;
 	
 	TreeNode right;
 	
-	TreeNode(int val) {
+	TreeNode(String val) {
 		this.value = val;
 		this.left = null;
 		this.right = null;
@@ -152,6 +169,6 @@ class TreeNode {
 	
 	@Override
 	public String toString() {
-		return String.valueOf(this.value);
+		return this.value;
 	}
 }

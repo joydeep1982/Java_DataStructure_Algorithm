@@ -1,6 +1,6 @@
-package ds.algo.solution;
+package ds.algo.solutions;
 
-public class MergeArraysSorted {
+public class MergeTwoSortedArray {
 
 	public int[] merge(int[] arr1, int[] arr2) {
 		
@@ -32,5 +32,15 @@ public class MergeArraysSorted {
 		}
 		
 		return resultArr;
+	}
+	
+	public static void main(String[] args) {
+		int[] arr1 = new int[] {2, 6, 8, 41};
+		int[] arr2 = new int[] {20, 60, 80, 90};
+		
+		int a[] = new MergeTwoSortedArray().merge(arr1, arr2);
+		for(int i : a) {
+			System.out.println(i);
+		}
 	}
 }

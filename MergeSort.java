@@ -52,7 +52,7 @@ public class MergeSort {
 	}
 
 	public static void main(String[] args) {
-		Integer[] arr = new Integer[] {0, 9, 7, 6, 1, 3, 5, 2, 4, 8};
+		Integer[] arr = new Integer[] {38, 27, 43, 3, 9, 82, 10};
 		new MergeSort().mergeSort(arr, 0, arr.length - 1);
 		Stream.of(arr).forEach(System.out::println);
 	}

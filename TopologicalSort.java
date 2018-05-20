@@ -1,4 +1,4 @@
-package ds.algo.solution;
+package ds.algo.solutions;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -33,9 +33,8 @@ public class TopologicalSort {
 		nodes.add(g);
 		
 		Stack<TopoNode> stack = new TopologicalSort().topoSort(nodes);
-		while(!stack.isEmpty()) {
-			System.out.println(stack.pop());
-		}
+		
+		stack.forEach(item -> System.out.println(item));
 	}
 	
 	private Stack<TopoNode> topoSort(Set<TopoNode> nodes) {
@@ -43,10 +42,8 @@ public class TopologicalSort {
 		Set<TopoNode> visited = new HashSet<>();
 		Set<TopoNode> allNodes = new HashSet<>(nodes);
 		
-		for (TopoNode topoNode : allNodes) {
-			sort(topoNode, topoStack, visited);
-		}
-		
+		allNodes.forEach(node -> sort(node, topoStack, visited));
+				
 		return topoStack;
 	}
 	
@@ -55,9 +52,8 @@ public class TopologicalSort {
 			return;
 		}
 		visited.add(node);
-		for (TopoNode childNode : node.getChildren()) {
-			sort(childNode, topoStack, visited);
-		}
+		node.getChildren().forEach(child -> sort(child, topoStack, visited));
+		
 		topoStack.add(node);
 	}
 }
